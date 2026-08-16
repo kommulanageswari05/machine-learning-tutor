@@ -4,7 +4,7 @@ from pathlib import Path
 
 from flask import Flask, request, jsonify, send_from_directory
 from dotenv import load_dotenv
-import google.generativeai as genai
+from google import genai
 
 
 # ============================================================
