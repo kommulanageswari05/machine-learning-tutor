@@ -1,0 +1,3864 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>ML LearnAI</title>
+
+
+    <style>
+
+        /* =====================================================
+           RESET
+        ===================================================== */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+
+        :root {
+
+            --bg: #060817;
+            --bg-secondary: #0b1024;
+
+            --card: rgba(255,255,255,0.06);
+            --card-hover: rgba(255,255,255,0.10);
+
+            --border: rgba(255,255,255,0.13);
+
+            --white: #ffffff;
+            --text: #edf2ff;
+            --muted: #9ca8c7;
+
+            --purple: #7c5cff;
+            --purple-light: #9b8aff;
+
+            --cyan: #20dfff;
+            --cyan-light: #67eaff;
+
+            --green: #35e5a0;
+            --yellow: #ffd166;
+            --red: #ff6b81;
+
+            --shadow:
+                0 25px 70px rgba(0,0,0,0.35);
+        }
+
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+
+        body {
+
+            min-height: 100vh;
+
+            font-family:
+                Arial,
+                Helvetica,
+                sans-serif;
+
+            color: var(--text);
+
+            background:
+
+                radial-gradient(
+                    circle at 10% 10%,
+                    rgba(124,92,255,0.25),
+                    transparent 30%
+                ),
+
+                radial-gradient(
+                    circle at 90% 15%,
+                    rgba(32,223,255,0.15),
+                    transparent 28%
+                ),
+
+                radial-gradient(
+                    circle at 50% 100%,
+                    rgba(124,92,255,0.12),
+                    transparent 35%
+                ),
+
+                linear-gradient(
+                    135deg,
+                    #040612,
+                    #080c20,
+                    #050716
+                );
+
+            overflow-x: hidden;
+        }
+
+
+        button,
+        input,
+        textarea {
+            font-family: inherit;
+        }
+
+
+        button {
+            cursor: pointer;
+        }
+
+
+        .hidden {
+            display: none !important;
+        }
+
+
+        /* =====================================================
+           GRADIENT
+        ===================================================== */
+
+        .gradient-text {
+
+            background:
+                linear-gradient(
+                    90deg,
+                    var(--purple-light),
+                    var(--cyan)
+                );
+
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+
+            background-clip: text;
+        }
+
+
+        /* =====================================================
+           LOGIN
+        ===================================================== */
+
+        #loginPage {
+
+            min-height: 100vh;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            padding: 25px;
+        }
+
+
+        .login-container {
+
+            width: 1050px;
+            max-width: 100%;
+
+            min-height: 620px;
+
+            display: grid;
+
+            grid-template-columns:
+                1.05fr 0.95fr;
+
+            overflow: hidden;
+
+            border:
+                1px solid var(--border);
+
+            border-radius: 30px;
+
+            background:
+                rgba(255,255,255,0.045);
+
+            backdrop-filter: blur(25px);
+
+            box-shadow: var(--shadow);
+        }
+
+
+        .login-left {
+
+            padding: 60px;
+
+            display: flex;
+
+            flex-direction: column;
+
+            justify-content: center;
+
+            background:
+
+                linear-gradient(
+                    145deg,
+                    rgba(124,92,255,0.18),
+                    rgba(32,223,255,0.04)
+                );
+        }
+
+
+        .logo-large {
+
+            width: 78px;
+            height: 78px;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 22px;
+
+            font-size: 36px;
+
+            margin-bottom: 25px;
+
+            background:
+
+                linear-gradient(
+                    135deg,
+                    var(--purple),
+                    var(--cyan)
+                );
+
+            box-shadow:
+                0 15px 40px
+                rgba(32,223,255,0.18);
+        }
+
+
+        .login-left h1 {
+
+            font-size: 48px;
+
+            line-height: 1.1;
+
+            margin-bottom: 18px;
+        }
+
+
+        .login-left > p {
+
+            max-width: 500px;
+
+            color: var(--muted);
+
+            line-height: 1.8;
+
+            font-size: 16px;
+        }
+
+
+        .feature-list {
+
+            margin-top: 35px;
+
+            display: grid;
+
+            gap: 14px;
+        }
+
+
+        .feature {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 12px;
+
+            color: #dce4fa;
+        }
+
+
+        .feature-icon {
+
+            width: 36px;
+            height: 36px;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 10px;
+
+            background:
+                rgba(124,92,255,0.16);
+        }
+
+
+        .login-right {
+
+            padding: 60px;
+
+            display: flex;
+
+            flex-direction: column;
+
+            justify-content: center;
+
+            background:
+                rgba(0,0,0,0.14);
+        }
+
+
+        .login-right h2 {
+
+            font-size: 30px;
+
+            margin-bottom: 8px;
+        }
+
+
+        .login-subtitle {
+
+            color: var(--muted);
+
+            margin-bottom: 32px;
+        }
+
+
+        .form-group {
+
+            margin-bottom: 20px;
+        }
+
+
+        .form-group label {
+
+            display: block;
+
+            margin-bottom: 8px;
+
+            color: #dfe6f8;
+
+            font-size: 14px;
+        }
+
+
+        .input {
+
+            width: 100%;
+
+            padding: 14px 15px;
+
+            color: white;
+
+            border:
+                1px solid var(--border);
+
+            outline: none;
+
+            border-radius: 12px;
+
+            background:
+                rgba(255,255,255,0.045);
+
+            transition: 0.25s;
+        }
+
+
+        .input::placeholder {
+            color: #6f7b9d;
+        }
+
+
+        .input:focus {
+
+            border-color: var(--cyan);
+
+            box-shadow:
+                0 0 0 4px
+                rgba(32,223,255,0.07);
+        }
+
+
+        .primary-btn {
+
+            width: 100%;
+
+            padding: 14px 18px;
+
+            border: none;
+
+            border-radius: 12px;
+
+            color: white;
+
+            font-weight: bold;
+
+            background:
+
+                linear-gradient(
+                    135deg,
+                    var(--purple),
+                    var(--cyan)
+                );
+
+            box-shadow:
+                0 10px 30px
+                rgba(124,92,255,0.20);
+
+            transition: 0.25s;
+        }
+
+
+        .primary-btn:hover {
+
+            transform: translateY(-2px);
+
+            box-shadow:
+                0 15px 35px
+                rgba(32,223,255,0.20);
+        }
+
+
+        .login-message {
+
+            min-height: 25px;
+
+            margin-top: 15px;
+
+            text-align: center;
+
+            color: var(--red);
+
+            font-size: 14px;
+        }
+
+
+        /* =====================================================
+           DASHBOARD
+        ===================================================== */
+
+        #dashboard {
+            display: none;
+        }
+
+
+        .navbar {
+
+            height: 72px;
+
+            position: sticky;
+
+            top: 0;
+
+            z-index: 100;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            padding: 0 35px;
+
+            background:
+                rgba(5,8,22,0.80);
+
+            border-bottom:
+                1px solid var(--border);
+
+            backdrop-filter: blur(20px);
+        }
+
+
+        .brand {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 12px;
+
+            font-weight: bold;
+
+            font-size: 20px;
+        }
+
+
+        .brand-icon {
+
+            width: 42px;
+            height: 42px;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 12px;
+
+            background:
+
+                linear-gradient(
+                    135deg,
+                    var(--purple),
+                    var(--cyan)
+                );
+        }
+
+
+        .nav-right {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 12px;
+        }
+
+
+        .user-badge {
+
+            padding: 9px 13px;
+
+            border-radius: 10px;
+
+            color: #cbd6ef;
+
+            background:
+                rgba(255,255,255,0.05);
+
+            border:
+                1px solid var(--border);
+        }
+
+
+        .logout-btn {
+
+            padding: 9px 15px;
+
+            border-radius: 10px;
+
+            color: white;
+
+            border:
+                1px solid var(--border);
+
+            background:
+                rgba(255,255,255,0.05);
+
+            transition: 0.2s;
+        }
+
+
+        .logout-btn:hover {
+
+            background:
+                rgba(255,107,129,0.12);
+
+            border-color:
+                rgba(255,107,129,0.35);
+        }
+
+
+        /* =====================================================
+           HERO
+        ===================================================== */
+
+        .hero {
+
+            max-width: 1200px;
+
+            margin: auto;
+
+            padding:
+                70px 25px 30px;
+        }
+
+
+        .hero-content {
+
+            display: flex;
+
+            align-items: flex-end;
+
+            justify-content: space-between;
+
+            gap: 30px;
+        }
+
+
+        .hero h1 {
+
+            font-size: 48px;
+
+            line-height: 1.15;
+
+            margin-bottom: 12px;
+        }
+
+
+        .hero p {
+
+            color: var(--muted);
+
+            font-size: 16px;
+        }
+
+
+        .model-pill {
+
+            padding: 10px 16px;
+
+            border-radius: 30px;
+
+            color: var(--green);
+
+            border:
+                1px solid
+                rgba(53,229,160,0.25);
+
+            background:
+                rgba(53,229,160,0.07);
+
+            white-space: nowrap;
+        }
+
+
+        /* =====================================================
+           STATS
+        ===================================================== */
+
+        .stats {
+
+            max-width: 1200px;
+
+            margin: auto;
+
+            padding:
+                10px 25px 25px;
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(4,1fr);
+
+            gap: 15px;
+        }
+
+
+        .stat {
+
+            padding: 20px;
+
+            border:
+                1px solid var(--border);
+
+            border-radius: 17px;
+
+            background: var(--card);
+
+            transition: 0.25s;
+        }
+
+
+        .stat:hover {
+
+            transform: translateY(-3px);
+
+            background: var(--card-hover);
+        }
+
+
+        .stat-icon {
+
+            font-size: 23px;
+
+            margin-bottom: 10px;
+        }
+
+
+        .stat-number {
+
+            font-size: 27px;
+
+            font-weight: bold;
+        }
+
+
+        .stat-label {
+
+            margin-top: 4px;
+
+            color: var(--muted);
+
+            font-size: 13px;
+        }
+
+
+        /* =====================================================
+           MODULE CARDS
+        ===================================================== */
+
+        .modules {
+
+            max-width: 1200px;
+
+            margin: auto;
+
+            padding:
+                15px 25px 70px;
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(3,1fr);
+
+            gap: 18px;
+        }
+
+
+        .module-card {
+
+            min-height: 230px;
+
+            position: relative;
+
+            overflow: hidden;
+
+            padding: 25px;
+
+            border:
+                1px solid var(--border);
+
+            border-radius: 20px;
+
+            background: var(--card);
+
+            cursor: pointer;
+
+            transition: 0.3s;
+        }
+
+
+        .module-card::before {
+
+            content: "";
+
+            position: absolute;
+
+            width: 160px;
+            height: 160px;
+
+            top: -80px;
+            right: -70px;
+
+            border-radius: 50%;
+
+            background:
+                rgba(124,92,255,0.12);
+
+            filter: blur(5px);
+        }
+
+
+        .module-card:hover {
+
+            transform: translateY(-7px);
+
+            border-color:
+                rgba(32,223,255,0.35);
+
+            background: var(--card-hover);
+
+            box-shadow:
+                0 20px 50px
+                rgba(0,0,0,0.20);
+        }
+
+
+        .module-icon {
+
+            width: 54px;
+            height: 54px;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 15px;
+
+            font-size: 25px;
+
+            margin-bottom: 18px;
+
+            background:
+
+                linear-gradient(
+                    135deg,
+                    rgba(124,92,255,0.22),
+                    rgba(32,223,255,0.09)
+                );
+        }
+
+
+        .module-card h3 {
+
+            margin-bottom: 9px;
+
+            font-size: 18px;
+        }
+
+
+        .module-card p {
+
+            color: var(--muted);
+
+            line-height: 1.6;
+
+            font-size: 13px;
+        }
+
+
+        .module-link {
+
+            position: absolute;
+
+            left: 25px;
+            bottom: 22px;
+
+            color: var(--cyan-light);
+
+            font-size: 13px;
+
+            font-weight: bold;
+        }
+
+
+        /* =====================================================
+           MODULE VIEW
+        ===================================================== */
+
+        .module-view {
+
+            max-width: 1000px;
+
+            margin:
+                30px auto 80px;
+
+            padding:
+                0 20px;
+        }
+
+
+        .module-box {
+
+            padding: 30px;
+
+            border:
+                1px solid var(--border);
+
+            border-radius: 22px;
+
+            background: var(--card);
+
+            box-shadow:
+                0 20px 60px
+                rgba(0,0,0,0.18);
+        }
+
+
+        .module-heading {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 15px;
+
+            margin-bottom: 8px;
+        }
+
+
+        .module-heading-icon {
+
+            width: 50px;
+            height: 50px;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 14px;
+
+            background:
+                rgba(124,92,255,0.15);
+
+            font-size: 23px;
+        }
+
+
+        .module-title {
+
+            font-size: 26px;
+        }
+
+
+        .module-description {
+
+            color: var(--muted);
+
+            margin-bottom: 22px;
+
+            line-height: 1.6;
+        }
+
+
+        textarea.input {
+
+            min-height: 160px;
+
+            resize: vertical;
+
+            line-height: 1.6;
+        }
+
+
+        .action-row {
+
+            display: flex;
+
+            gap: 10px;
+
+            margin-top: 13px;
+
+            flex-wrap: wrap;
+        }
+
+
+        .action-btn {
+
+            padding: 12px 18px;
+
+            border: none;
+
+            border-radius: 10px;
+
+            color: white;
+
+            font-weight: bold;
+
+            background:
+
+                linear-gradient(
+                    135deg,
+                    var(--purple),
+                    var(--cyan)
+                );
+
+            transition: 0.2s;
+        }
+
+
+        .action-btn:hover {
+
+            transform: translateY(-2px);
+        }
+
+
+        .back-btn {
+
+            padding: 11px 16px;
+
+            border-radius: 10px;
+
+            color: #dbe4fa;
+
+            border:
+                1px solid var(--border);
+
+            background:
+                rgba(255,255,255,0.05);
+        }
+
+
+        .back-btn:hover {
+
+            background:
+                rgba(255,255,255,0.10);
+        }
+
+
+        /* =====================================================
+           OUTPUT
+        ===================================================== */
+
+        .output {
+
+            margin-top: 20px;
+
+            min-height: 120px;
+
+            padding: 20px;
+
+            border:
+                1px solid
+                rgba(255,255,255,0.08);
+
+            border-radius: 15px;
+
+            background:
+                rgba(0,0,0,0.20);
+
+            color: #dce5fb;
+
+            line-height: 1.75;
+
+            white-space: pre-wrap;
+
+            overflow-x: auto;
+        }
+
+
+        .code-output {
+
+            font-family:
+                Consolas,
+                "Courier New",
+                monospace;
+
+            color: #aeeeff;
+        }
+
+
+        /* =====================================================
+           LOADING
+        ===================================================== */
+
+        .loading {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 10px;
+
+            color: var(--cyan-light);
+        }
+
+
+        .spinner {
+
+            width: 18px;
+            height: 18px;
+
+            border:
+                2px solid
+                rgba(255,255,255,0.20);
+
+            border-top-color:
+                var(--cyan);
+
+            border-radius: 50%;
+
+            animation:
+                spin 0.7s linear infinite;
+        }
+
+
+        @keyframes spin {
+
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+
+        /* =====================================================
+           QUIZ
+        ===================================================== */
+
+        .quiz-header {
+
+            padding: 17px;
+
+            margin-bottom: 15px;
+
+            border-radius: 14px;
+
+            background:
+
+                linear-gradient(
+                    135deg,
+                    rgba(124,92,255,0.12),
+                    rgba(32,223,255,0.06)
+                );
+
+            border:
+                1px solid var(--border);
+        }
+
+
+        .quiz-question {
+
+            padding: 18px;
+
+            margin-bottom: 12px;
+
+            border-radius: 14px;
+
+            border:
+                1px solid var(--border);
+
+            background:
+                rgba(255,255,255,0.035);
+        }
+
+
+        .quiz-question strong {
+
+            display: block;
+
+            margin-bottom: 13px;
+
+            line-height: 1.5;
+        }
+
+
+        .quiz-option {
+
+            display: block;
+
+            padding: 10px;
+
+            margin: 6px 0;
+
+            border-radius: 9px;
+
+            color: #cbd6ed;
+
+            background:
+                rgba(255,255,255,0.025);
+
+            cursor: pointer;
+
+            transition: 0.2s;
+        }
+
+
+        .quiz-option:hover {
+
+            background:
+                rgba(124,92,255,0.12);
+        }
+
+
+        .quiz-option input {
+
+            width: auto;
+
+            margin-right: 8px;
+        }
+
+
+        .result-box {
+
+            margin-top: 18px;
+
+            padding: 25px;
+
+            text-align: center;
+
+            border:
+                1px solid var(--border);
+
+            border-radius: 17px;
+
+            background:
+
+                linear-gradient(
+                    135deg,
+                    rgba(124,92,255,0.14),
+                    rgba(32,223,255,0.08)
+                );
+        }
+
+
+        .score {
+
+            margin: 8px;
+
+            color: var(--cyan-light);
+
+            font-size: 38px;
+
+            font-weight: 900;
+        }
+
+
+        .rank {
+
+            color: var(--yellow);
+
+            font-size: 20px;
+
+            font-weight: bold;
+        }
+
+
+        /* =====================================================
+           VOICE
+        ===================================================== */
+
+        .voice-buttons {
+
+            display: flex;
+
+            gap: 8px;
+
+            flex-wrap: wrap;
+
+            margin-top: 15px;
+        }
+
+
+        .voice-btn {
+
+            padding: 10px 15px;
+
+            color: #dce5f8;
+
+            border:
+                1px solid var(--border);
+
+            border-radius: 10px;
+
+            background:
+                rgba(255,255,255,0.05);
+
+            transition: 0.2s;
+        }
+
+
+        .voice-btn:hover {
+
+            background:
+                rgba(124,92,255,0.12);
+        }
+
+
+        .voice-status {
+
+            margin-top: 15px;
+
+            min-height: 24px;
+
+            color: var(--cyan-light);
+        }
+
+
+        /* =====================================================
+           DIAGRAM
+        ===================================================== */
+
+        .diagram-container {
+
+            margin-top: 25px;
+
+            padding: 20px;
+
+            border:
+                1px solid
+                rgba(255,255,255,0.08);
+
+            border-radius: 18px;
+
+            background:
+                rgba(0,0,0,0.15);
+        }
+
+
+        .diagram-title {
+
+            text-align: center;
+
+            font-size: 24px;
+
+            margin-bottom: 10px;
+
+            color: white;
+        }
+
+
+        .diagram-description {
+
+            text-align: center;
+
+            color: var(--muted);
+
+            line-height: 1.6;
+
+            margin-bottom: 25px;
+        }
+
+
+        .diagram {
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            gap: 12px;
+
+            flex-wrap: wrap;
+        }
+
+
+        .diagram-item {
+
+            min-width: 150px;
+
+            max-width: 200px;
+
+            padding: 20px;
+
+            text-align: center;
+
+            border-radius: 15px;
+
+            border:
+                1px solid var(--border);
+
+            background:
+
+                linear-gradient(
+                    135deg,
+                    rgba(124,92,255,0.14),
+                    rgba(32,223,255,0.05)
+                );
+
+            box-shadow:
+                0 10px 30px
+                rgba(0,0,0,0.15);
+
+            transition: 0.25s;
+        }
+
+
+        .diagram-item:hover {
+
+            transform: translateY(-5px);
+
+            border-color:
+                rgba(32,223,255,0.40);
+        }
+
+
+        .diagram-icon {
+
+            font-size: 30px;
+
+            margin-bottom: 10px;
+        }
+
+
+        .diagram-item-title {
+
+            font-weight: bold;
+
+            margin-bottom: 8px;
+
+            color: white;
+        }
+
+
+        .diagram-item-description {
+
+            color: var(--muted);
+
+            font-size: 13px;
+
+            line-height: 1.5;
+        }
+
+
+        .arrow {
+
+            color: var(--cyan-light);
+
+            font-size: 28px;
+
+            font-weight: bold;
+        }
+
+
+        /* =====================================================
+           ERROR
+        ===================================================== */
+
+        .error-text {
+
+            color: var(--red);
+        }
+
+
+        /* =====================================================
+           RESPONSIVE
+        ===================================================== */
+
+        @media (max-width: 900px) {
+
+            .login-container {
+
+                grid-template-columns: 1fr;
+            }
+
+
+            .login-left {
+
+                display: none;
+            }
+
+
+            .stats {
+
+                grid-template-columns:
+                    repeat(2,1fr);
+            }
+
+
+            .modules {
+
+                grid-template-columns:
+                    repeat(2,1fr);
+            }
+        }
+
+
+        @media (max-width: 650px) {
+
+            .navbar {
+
+                padding: 0 15px;
+            }
+
+
+            .brand {
+
+                font-size: 17px;
+            }
+
+
+            .user-badge {
+
+                display: none;
+            }
+
+
+            .hero {
+
+                padding-top: 45px;
+            }
+
+
+            .hero-content {
+
+                display: block;
+            }
+
+
+            .hero h1 {
+
+                font-size: 35px;
+            }
+
+
+            .model-pill {
+
+                display: inline-block;
+
+                margin-top: 18px;
+            }
+
+
+            .stats {
+
+                grid-template-columns: 1fr;
+            }
+
+
+            .modules {
+
+                grid-template-columns: 1fr;
+            }
+
+
+            .login-right {
+
+                padding: 35px 25px;
+            }
+
+
+            .module-box {
+
+                padding: 20px;
+            }
+
+
+            .diagram {
+
+                flex-direction: column;
+            }
+
+
+            .arrow {
+
+                transform: rotate(90deg);
+            }
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- =========================================================
+     LOGIN PAGE
+========================================================= -->
+
+<section id="loginPage">
+
+    <div class="login-container">
+
+
+        <div class="login-left">
+
+            <div class="logo-large">
+                🤖
+            </div>
+
+
+            <h1>
+
+                ML
+                <span class="gradient-text">
+                    LearnAI
+                </span>
+
+            </h1>
+
+
+            <p>
+
+                Your intelligent Machine Learning
+                learning assistant. Learn concepts,
+                generate code, practice quizzes,
+                listen to explanations and understand
+                ML concepts visually.
+
+            </p>
+
+
+            <div class="feature-list">
+
+                <div class="feature">
+                    <div class="feature-icon">🧠</div>
+                    AI Concept Explanation
+                </div>
+
+
+                <div class="feature">
+                    <div class="feature-icon">💻</div>
+                    Python & ML Code Generation
+                </div>
+
+
+                <div class="feature">
+                    <div class="feature-icon">📝</div>
+                    AI Generated Quizzes
+                </div>
+
+
+                <div class="feature">
+                    <div class="feature-icon">🔊</div>
+                    AI Voice Explanation
+                </div>
+
+
+                <div class="feature">
+                    <div class="feature-icon">📊</div>
+                    Dynamic Visual Diagrams
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="login-right">
+
+            <h2>
+                Welcome Back 👋
+            </h2>
+
+
+            <p class="login-subtitle">
+                Start your Machine Learning journey.
+            </p>
+
+
+            <div class="form-group">
+
+                <label for="username">
+                    Username / Email
+                </label>
+
+
+                <input
+                    id="username"
+                    class="input"
+                    type="text"
+                    placeholder="Enter your username"
+                    autocomplete="username"
+                >
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label for="password">
+                    Password
+                </label>
+
+
+                <input
+                    id="password"
+                    class="input"
+                    type="password"
+                    placeholder="Enter your password"
+                    autocomplete="current-password"
+                >
+
+            </div>
+
+
+            <button
+                class="primary-btn"
+                type="button"
+                onclick="login()"
+            >
+                Login to ML LearnAI →
+            </button>
+
+
+            <div
+                id="loginMessage"
+                class="login-message"
+            ></div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================================================
+     DASHBOARD
+========================================================= -->
+
+<section id="dashboard">
+
+
+    <!-- NAVBAR -->
+
+    <nav class="navbar">
+
+        <div class="brand">
+
+            <div class="brand-icon">
+                🤖
+            </div>
+
+            ML LearnAI
+
+        </div>
+
+
+        <div class="nav-right">
+
+            <span
+                id="displayUser"
+                class="user-badge"
+            >
+                Student
+            </span>
+
+
+            <button
+                class="logout-btn"
+                type="button"
+                onclick="logout()"
+            >
+                Logout
+            </button>
+
+        </div>
+
+    </nav>
+
+
+
+    <!-- HERO -->
+
+    <section
+        id="heroSection"
+        class="hero"
+    >
+
+        <div class="hero-content">
+
+            <div>
+
+                <h1>
+
+                    Learn
+                    <span class="gradient-text">
+                        Machine Learning
+                    </span>
+
+                </h1>
+
+
+                <p>
+
+                    Understand concepts.
+                    Generate code.
+                    Listen.
+                    Visualize.
+                    Practice.
+
+                </p>
+
+            </div>
+
+
+            <div class="model-pill">
+
+                ✦ AI Powered Learning
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- STATS -->
+
+    <section
+        id="statsSection"
+        class="stats"
+    >
+
+        <div class="stat">
+
+            <div class="stat-icon">
+                🧠
+            </div>
+
+            <div class="stat-number">
+                AI
+            </div>
+
+            <div class="stat-label">
+                Intelligent Learning
+            </div>
+
+        </div>
+
+
+        <div class="stat">
+
+            <div class="stat-icon">
+                💻
+            </div>
+
+            <div class="stat-number">
+                Python
+            </div>
+
+            <div class="stat-label">
+                Code Generation
+            </div>
+
+        </div>
+
+
+        <div class="stat">
+
+            <div class="stat-icon">
+                🔊
+            </div>
+
+            <div class="stat-number">
+                Voice
+            </div>
+
+            <div class="stat-label">
+                AI Explanation
+            </div>
+
+        </div>
+
+
+        <div class="stat">
+
+            <div class="stat-icon">
+                📊
+            </div>
+
+            <div class="stat-number">
+                Visual
+            </div>
+
+            <div class="stat-label">
+                Dynamic Diagrams
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- MODULE CARDS -->
+
+    <section
+        id="moduleCards"
+        class="modules"
+    >
+
+
+        <!-- CONCEPT -->
+
+        <div
+            class="module-card"
+            onclick="openModule('concept')"
+        >
+
+            <div class="module-icon">
+                🧠
+            </div>
+
+
+            <h3>
+                Concept Explanation
+            </h3>
+
+
+            <p>
+
+                Ask AI to explain any Machine Learning
+                concept in simple beginner-friendly language.
+
+            </p>
+
+
+            <span class="module-link">
+                Explore →
+            </span>
+
+        </div>
+
+
+
+        <!-- CODE -->
+
+        <div
+            class="module-card"
+            onclick="openModule('code')"
+        >
+
+            <div class="module-icon">
+                💻
+            </div>
+
+
+            <h3>
+                AI Code Generator
+            </h3>
+
+
+            <p>
+
+                Describe the Python or Machine Learning
+                program you want and generate executable code.
+
+            </p>
+
+
+            <span class="module-link">
+                Generate →
+            </span>
+
+        </div>
+
+
+
+        <!-- QUIZ -->
+
+        <div
+            class="module-card"
+            onclick="openModule('quiz')"
+        >
+
+            <div class="module-icon">
+                📝
+            </div>
+
+
+            <h3>
+                AI Quiz
+            </h3>
+
+
+            <p>
+
+                Generate five multiple-choice questions
+                for any Machine Learning topic.
+
+            </p>
+
+
+            <span class="module-link">
+                Start Quiz →
+            </span>
+
+        </div>
+
+
+
+        <!-- VOICE -->
+
+        <div
+            class="module-card"
+            onclick="openModule('voice')"
+        >
+
+            <div class="module-icon">
+                🔊
+            </div>
+
+
+            <h3>
+                AI Voice Learning
+            </h3>
+
+
+            <p>
+
+                Enter a topic. AI explains it first and
+                then automatically reads the explanation.
+
+            </p>
+
+
+            <span class="module-link">
+                Generate Voice →
+            </span>
+
+        </div>
+
+
+
+        <!-- DIAGRAM -->
+
+        <div
+            class="module-card"
+            onclick="openModule('diagram')"
+        >
+
+            <div class="module-icon">
+                📊
+            </div>
+
+
+            <h3>
+                Dynamic Visual Diagram
+            </h3>
+
+
+            <p>
+
+                Enter any topic and AI creates a
+                topic-specific visual learning workflow.
+
+            </p>
+
+
+            <span class="module-link">
+                Generate Diagram →
+            </span>
+
+        </div>
+
+
+
+        <!-- LEARNING HUB -->
+
+        <div class="module-card">
+
+            <div class="module-icon">
+                🚀
+            </div>
+
+
+            <h3>
+                Learning Hub
+            </h3>
+
+
+            <p>
+
+                More AI-powered learning features
+                can be added here in future versions.
+
+            </p>
+
+
+            <span class="module-link">
+                Coming Soon
+            </span>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         CONCEPT MODULE
+    ===================================================== -->
+
+    <section
+        id="conceptModule"
+        class="module-view hidden"
+    >
+
+        <div class="module-box">
+
+            <div class="module-heading">
+
+                <div class="module-heading-icon">
+                    🧠
+                </div>
+
+
+                <h2 class="module-title">
+                    Concept Explanation
+                </h2>
+
+            </div>
+
+
+            <p class="module-description">
+
+                Enter any Machine Learning topic and
+                get a complete AI-powered explanation.
+
+            </p>
+
+
+            <textarea
+                id="conceptInput"
+                class="input"
+                placeholder="Example: Explain Random Forest..."
+            ></textarea>
+
+
+            <div class="action-row">
+
+                <button
+                    class="action-btn"
+                    type="button"
+                    onclick="explainConcept()"
+                >
+                    ✨ Explain Concept
+                </button>
+
+
+                <button
+                    class="back-btn"
+                    type="button"
+                    onclick="backHome()"
+                >
+                    ← Back
+                </button>
+
+            </div>
+
+
+            <div
+                id="conceptOutput"
+                class="output"
+            >
+                Your AI explanation will appear here.
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         CODE MODULE
+    ===================================================== -->
+
+    <section
+        id="codeModule"
+        class="module-view hidden"
+    >
+
+        <div class="module-box">
+
+            <div class="module-heading">
+
+                <div class="module-heading-icon">
+                    💻
+                </div>
+
+
+                <h2 class="module-title">
+                    AI Code Generator
+                </h2>
+
+            </div>
+
+
+            <p class="module-description">
+
+                Describe the Python or Machine Learning
+                code you want to generate.
+
+            </p>
+
+
+            <textarea
+                id="codeInput"
+                class="input"
+                placeholder="Example: Create Python code for Linear Regression using scikit-learn..."
+            ></textarea>
+
+
+            <div class="action-row">
+
+                <button
+                    class="action-btn"
+                    type="button"
+                    onclick="generateCode()"
+                >
+                    ⚡ Generate Code
+                </button>
+
+
+                <button
+                    class="back-btn"
+                    type="button"
+                    onclick="backHome()"
+                >
+                    ← Back
+                </button>
+
+            </div>
+
+
+            <div
+                id="codeOutput"
+                class="output code-output"
+            >
+                Generated code will appear here.
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         QUIZ MODULE
+    ===================================================== -->
+
+    <section
+        id="quizModule"
+        class="module-view hidden"
+    >
+
+        <div class="module-box">
+
+            <div class="module-heading">
+
+                <div class="module-heading-icon">
+                    📝
+                </div>
+
+
+                <h2 class="module-title">
+                    AI Quiz
+                </h2>
+
+            </div>
+
+
+            <p class="module-description">
+
+                Enter any topic and generate a
+                five-question multiple-choice quiz.
+
+            </p>
+
+
+            <input
+                id="quizTopic"
+                class="input"
+                type="text"
+                placeholder="Example: Decision Trees"
+            >
+
+
+            <div class="action-row">
+
+                <button
+                    class="action-btn"
+                    type="button"
+                    onclick="generateQuiz()"
+                >
+                    🎯 Generate Quiz
+                </button>
+
+
+                <button
+                    class="back-btn"
+                    type="button"
+                    onclick="backHome()"
+                >
+                    ← Back
+                </button>
+
+            </div>
+
+
+            <div
+                id="quizOutput"
+                class="output"
+            >
+                Your quiz will appear here.
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         VOICE MODULE
+    ===================================================== -->
+
+    <section
+        id="voiceModule"
+        class="module-view hidden"
+    >
+
+        <div class="module-box">
+
+            <div class="module-heading">
+
+                <div class="module-heading-icon">
+                    🔊
+                </div>
+
+
+                <h2 class="module-title">
+                    AI Voice Learning
+                </h2>
+
+            </div>
+
+
+            <p class="module-description">
+
+                Enter any Machine Learning topic.
+                AI will first generate an explanation
+                and then automatically speak that explanation.
+
+            </p>
+
+
+            <input
+                id="voiceTopic"
+                class="input"
+                type="text"
+                placeholder="Example: Explain Random Forest"
+            >
+
+
+            <div class="action-row">
+
+                <button
+                    class="action-btn"
+                    type="button"
+                    onclick="generateVoiceExplanation()"
+                >
+                    🔊 Generate Explanation & Voice
+                </button>
+
+
+                <button
+                    class="back-btn"
+                    type="button"
+                    onclick="backHome()"
+                >
+                    ← Back
+                </button>
+
+            </div>
+
+
+            <div class="voice-buttons">
+
+                <button
+                    class="voice-btn"
+                    type="button"
+                    onclick="startVoice()"
+                >
+                    ▶ Start
+                </button>
+
+
+                <button
+                    class="voice-btn"
+                    type="button"
+                    onclick="pauseVoice()"
+                >
+                    ⏸ Pause
+                </button>
+
+
+                <button
+                    class="voice-btn"
+                    type="button"
+                    onclick="resumeVoice()"
+                >
+                    ▶ Resume
+                </button>
+
+
+                <button
+                    class="voice-btn"
+                    type="button"
+                    onclick="stopVoice()"
+                >
+                    ⏹ Stop
+                </button>
+
+            </div>
+
+
+            <div
+                id="voiceStatus"
+                class="voice-status"
+            ></div>
+
+
+            <div
+                id="voiceExplanation"
+                class="output"
+            >
+                AI generated explanation will appear here.
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         DYNAMIC DIAGRAM MODULE
+    ===================================================== -->
+
+    <section
+        id="diagramModule"
+        class="module-view hidden"
+    >
+
+        <div class="module-box">
+
+            <div class="module-heading">
+
+                <div class="module-heading-icon">
+                    📊
+                </div>
+
+
+                <h2 class="module-title">
+                    Dynamic Visual Diagram
+                </h2>
+
+            </div>
+
+
+            <p class="module-description">
+
+                Enter any Machine Learning concept.
+                Gemini will generate a topic-specific
+                visual learning flow.
+
+            </p>
+
+
+            <input
+                id="diagramTopic"
+                class="input"
+                type="text"
+                placeholder="Example: How does Random Forest work?"
+            >
+
+
+            <div class="action-row">
+
+                <button
+                    class="action-btn"
+                    type="button"
+                    onclick="generateDiagram()"
+                >
+                    📊 Generate Visual Diagram
+                </button>
+
+
+                <button
+                    class="back-btn"
+                    type="button"
+                    onclick="backHome()"
+                >
+                    ← Back
+                </button>
+
+            </div>
+
+
+            <div
+                id="diagramOutput"
+                class="output"
+            >
+                Your AI generated diagram will appear here.
+            </div>
+
+        </div>
+
+    </section>
+
+</section>
+
+
+
+<script>
+
+/* =========================================================
+   GLOBAL VARIABLES
+========================================================= */
+
+let currentQuiz = [];
+
+let currentSpeech = null;
+
+let generatedVoiceText = "";
+
+
+/* =========================================================
+   LOGIN
+========================================================= */
+
+function login() {
+
+    const username =
+        document
+            .getElementById("username")
+            .value
+            .trim();
+
+
+    const password =
+        document
+            .getElementById("password")
+            .value
+            .trim();
+
+
+    const message =
+        document.getElementById(
+            "loginMessage"
+        );
+
+
+    if (!username || !password) {
+
+        message.textContent =
+            "Please enter username and password.";
+
+        return;
+    }
+
+
+    message.textContent = "";
+
+
+    document
+        .getElementById("loginPage")
+        .style.display = "none";
+
+
+    document
+        .getElementById("dashboard")
+        .style.display = "block";
+
+
+    document
+        .getElementById("displayUser")
+        .textContent = username;
+
+
+    window.scrollTo(0,0);
+}
+
+
+/* =========================================================
+   LOGOUT
+========================================================= */
+
+function logout() {
+
+    stopVoice();
+
+    document
+        .getElementById("dashboard")
+        .style.display = "none";
+
+
+    document
+        .getElementById("loginPage")
+        .style.display = "flex";
+
+
+    document
+        .getElementById("username")
+        .value = "";
+
+
+    document
+        .getElementById("password")
+        .value = "";
+
+
+    backHome();
+}
+
+
+/* =========================================================
+   MODULE MANAGEMENT
+========================================================= */
+
+const moduleNames = [
+    "concept",
+    "code",
+    "quiz",
+    "voice",
+    "diagram"
+];
+
+
+function openModule(name) {
+
+    document
+        .getElementById("moduleCards")
+        .classList.add("hidden");
+
+
+    document
+        .getElementById("heroSection")
+        .classList.add("hidden");
+
+
+    document
+        .getElementById("statsSection")
+        .classList.add("hidden");
+
+
+    moduleNames.forEach(function(module) {
+
+        document
+            .getElementById(
+                module + "Module"
+            )
+            .classList.add("hidden");
+
+    });
+
+
+    const selected =
+        document.getElementById(
+            name + "Module"
+        );
+
+
+    if (selected) {
+
+        selected.classList.remove(
+            "hidden"
+        );
+    }
+
+
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+}
+
+
+function backHome() {
+
+    stopVoice();
+
+
+    moduleNames.forEach(function(module) {
+
+        document
+            .getElementById(
+                module + "Module"
+            )
+            .classList.add("hidden");
+
+    });
+
+
+    document
+        .getElementById("moduleCards")
+        .classList.remove("hidden");
+
+
+    document
+        .getElementById("heroSection")
+        .classList.remove("hidden");
+
+
+    document
+        .getElementById("statsSection")
+        .classList.remove("hidden");
+
+
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+}
+
+
+/* =========================================================
+   API REQUEST
+========================================================= */
+
+async function apiRequest(url, body) {
+
+    const response =
+        await fetch(
+            url,
+            {
+                method: "POST",
+
+                headers: {
+                    "Content-Type":
+                        "application/json"
+                },
+
+                body:
+                    JSON.stringify(body)
+            }
+        );
+
+
+    const text =
+        await response.text();
+
+
+    let data;
+
+
+    try {
+
+        data = JSON.parse(text);
+
+    }
+    catch (error) {
+
+        throw new Error(
+            "The server returned an invalid response."
+        );
+    }
+
+
+    if (!response.ok) {
+
+        throw new Error(
+            data.error ||
+            data.message ||
+            "Server request failed."
+        );
+    }
+
+
+    return data;
+}
+
+
+/* =========================================================
+   LOADING
+========================================================= */
+
+function showLoading(message) {
+
+    return `
+
+        <div class="loading">
+
+            <div class="spinner"></div>
+
+            ${escapeHTML(message)}
+
+        </div>
+
+    `;
+}
+
+
+/* =========================================================
+   CONCEPT EXPLANATION
+========================================================= */
+
+async function explainConcept() {
+
+    const topic =
+        document
+            .getElementById("conceptInput")
+            .value
+            .trim();
+
+
+    const output =
+        document.getElementById(
+            "conceptOutput"
+        );
+
+
+    if (!topic) {
+
+        output.textContent =
+            "Please enter a Machine Learning topic.";
+
+        return;
+    }
+
+
+    output.innerHTML =
+        showLoading(
+            "AI is preparing your explanation..."
+        );
+
+
+    try {
+
+        const data =
+            await apiRequest(
+                "/api/explain",
+                {
+                    topic: topic
+                }
+            );
+
+
+        output.textContent =
+            data.explanation ||
+            "No explanation received.";
+
+    }
+    catch (error) {
+
+        output.innerHTML = `
+
+            <span class="error-text">
+                ❌ Explanation failed.
+            </span>
+
+            <br><br>
+
+            ${escapeHTML(error.message)}
+
+        `;
+    }
+}
+
+
+/* =========================================================
+   CODE GENERATION
+========================================================= */
+
+async function generateCode() {
+
+    const prompt =
+        document
+            .getElementById("codeInput")
+            .value
+            .trim();
+
+
+    const output =
+        document.getElementById(
+            "codeOutput"
+        );
+
+
+    if (!prompt) {
+
+        output.textContent =
+            "Please describe the code you want.";
+
+        return;
+    }
+
+
+    output.innerHTML =
+        showLoading(
+            "AI is generating your code..."
+        );
+
+
+    try {
+
+        const data =
+            await apiRequest(
+                "/api/generate-code",
+                {
+                    prompt: prompt
+                }
+            );
+
+
+        output.textContent =
+            data.code ||
+            data.generated_code ||
+            data.answer ||
+            "No code received.";
+
+    }
+    catch (error) {
+
+        output.innerHTML = `
+
+            <span class="error-text">
+                ❌ Code generation failed.
+            </span>
+
+            <br><br>
+
+            ${escapeHTML(error.message)}
+
+        `;
+    }
+}
+
+
+/* =========================================================
+   QUIZ GENERATION
+========================================================= */
+
+async function generateQuiz() {
+
+    const topic =
+        document
+            .getElementById("quizTopic")
+            .value
+            .trim();
+
+
+    const output =
+        document.getElementById(
+            "quizOutput"
+        );
+
+
+    if (!topic) {
+
+        output.textContent =
+            "Please enter a quiz topic.";
+
+        return;
+    }
+
+
+    output.innerHTML =
+        showLoading(
+            "AI is creating your quiz..."
+        );
+
+
+    try {
+
+        const data =
+            await apiRequest(
+                "/api/quiz",
+                {
+                    topic: topic
+                }
+            );
+
+
+        currentQuiz =
+            data.questions || [];
+
+
+        if (
+            !Array.isArray(currentQuiz) ||
+            currentQuiz.length === 0
+        ) {
+
+            throw new Error(
+                "No quiz questions were received."
+            );
+        }
+
+
+        displayQuiz(topic);
+
+    }
+    catch (error) {
+
+        output.innerHTML = `
+
+            <span class="error-text">
+                ❌ Quiz generation failed.
+            </span>
+
+            <br><br>
+
+            ${escapeHTML(error.message)}
+
+        `;
+    }
+}
+
+
+/* =========================================================
+   DISPLAY QUIZ
+========================================================= */
+
+function displayQuiz(topic) {
+
+    const output =
+        document.getElementById(
+            "quizOutput"
+        );
+
+
+    let html = "";
+
+
+    html += `
+
+        <div class="quiz-header">
+
+            <strong>
+                🎯 ${escapeHTML(topic)}
+            </strong>
+
+            <br><br>
+
+            Answer all questions and submit the quiz.
+
+        </div>
+
+    `;
+
+
+    currentQuiz.forEach(
+        function(question,index) {
+
+            html += `
+
+                <div class="quiz-question">
+
+                    <strong>
+
+                        Q${index + 1}.
+                        ${escapeHTML(
+                            question.question
+                        )}
+
+                    </strong>
+
+            `;
+
+
+            const options =
+                Array.isArray(
+                    question.options
+                )
+                    ? question.options
+                    : [];
+
+
+            options.forEach(
+                function(option,optionIndex) {
+
+                    html += `
+
+                        <label class="quiz-option">
+
+                            <input
+                                type="radio"
+                                name="question${index}"
+                                value="${optionIndex}"
+                            >
+
+                            ${escapeHTML(option)}
+
+                        </label>
+
+                    `;
+                }
+            );
+
+
+            html += `
+                </div>
+            `;
+        }
+    );
+
+
+    html += `
+
+        <button
+            class="action-btn"
+            type="button"
+            onclick="checkQuiz()"
+        >
+            Submit Quiz
+        </button>
+
+        <div id="quizResult"></div>
+
+    `;
+
+
+    output.innerHTML = html;
+}
+
+
+/* =========================================================
+   CHECK QUIZ
+========================================================= */
+
+function checkQuiz() {
+
+    let score = 0;
+
+    let answered = 0;
+
+
+    currentQuiz.forEach(
+        function(question,index) {
+
+            const selected =
+                document.querySelector(
+                    `input[name="question${index}"]:checked`
+                );
+
+
+            if (!selected) {
+                return;
+            }
+
+
+            answered++;
+
+
+            const correctAnswer =
+                Number(
+                    question.answer
+                );
+
+
+            const selectedAnswer =
+                Number(
+                    selected.value
+                );
+
+
+            if (
+                selectedAnswer ===
+                correctAnswer
+            ) {
+
+                score++;
+            }
+        }
+    );
+
+
+    const total =
+        currentQuiz.length;
+
+
+    if (total === 0) {
+        return;
+    }
+
+
+    const percentage =
+        Math.round(
+            (score / total) * 100
+        );
+
+
+    let rank;
+
+
+    if (percentage === 100) {
+
+        rank = "🏆 Excellent";
+
+    }
+    else if (percentage >= 80) {
+
+        rank = "🥇 Outstanding";
+
+    }
+    else if (percentage >= 60) {
+
+        rank = "🥈 Good Job";
+
+    }
+    else if (percentage >= 40) {
+
+        rank = "🥉 Keep Practicing";
+
+    }
+    else {
+
+        rank = "📚 More Learning Needed";
+    }
+
+
+    const result =
+        document.getElementById(
+            "quizResult"
+        );
+
+
+    result.innerHTML = `
+
+        <div class="result-box">
+
+            <div>
+                🎉 Quiz Completed
+            </div>
+
+            <div class="score">
+                ${score}/${total}
+            </div>
+
+            <div>
+                ${percentage}%
+            </div>
+
+            <br>
+
+            <div class="rank">
+                ${rank}
+            </div>
+
+            <br>
+
+            <small>
+                Answered:
+                ${answered}/${total}
+            </small>
+
+        </div>
+
+    `;
+}
+
+
+/* =========================================================
+   AI VOICE EXPLANATION
+========================================================= */
+
+async function generateVoiceExplanation() {
+
+    const topic =
+        document
+            .getElementById("voiceTopic")
+            .value
+            .trim();
+
+
+    const explanation =
+        document.getElementById(
+            "voiceExplanation"
+        );
+
+
+    const status =
+        document.getElementById(
+            "voiceStatus"
+        );
+
+
+    if (!topic) {
+
+        explanation.innerHTML = `
+
+            <span class="error-text">
+                ❌ Please enter a topic.
+            </span>
+
+        `;
+
+        return;
+    }
+
+
+    if (!("speechSynthesis" in window)) {
+
+        status.innerHTML = `
+
+            <span class="error-text">
+                ❌ Your browser does not support speech.
+            </span>
+
+        `;
+
+        return;
+    }
+
+
+    window.speechSynthesis.cancel();
+
+
+    generatedVoiceText = "";
+
+
+    explanation.innerHTML =
+        showLoading(
+            "AI is explaining " +
+            topic +
+            "..."
+        );
+
+
+    status.textContent =
+        "🧠 Generating explanation...";
+
+
+    try {
+
+        const data =
+            await apiRequest(
+                "/api/voice-explanation",
+                {
+                    topic: topic
+                }
+            );
+
+
+        generatedVoiceText =
+            data.explanation ||
+            "";
+
+
+        if (!generatedVoiceText) {
+
+            throw new Error(
+                "AI did not return an explanation."
+            );
+        }
+
+
+        explanation.textContent =
+            generatedVoiceText;
+
+
+        status.textContent =
+            "🔊 Starting voice...";
+
+
+        speakGeneratedExplanation();
+
+    }
+    catch (error) {
+
+        console.error(
+            "Voice Explanation Error:",
+            error
+        );
+
+
+        explanation.innerHTML = `
+
+            <span class="error-text">
+                ❌ Failed to generate explanation.
+            </span>
+
+            <br><br>
+
+            ${escapeHTML(
+                error.message
+            )}
+
+        `;
+
+
+        status.textContent = "";
+    }
+}
+
+
+/* =========================================================
+   SPEAK GENERATED EXPLANATION
+========================================================= */
+
+function speakGeneratedExplanation() {
+
+    if (!generatedVoiceText) {
+
+        document
+            .getElementById(
+                "voiceStatus"
+            )
+            .textContent =
+            "Please generate an explanation first.";
+
+        return;
+    }
+
+
+    if (!("speechSynthesis" in window)) {
+
+        document
+            .getElementById(
+                "voiceStatus"
+            )
+            .textContent =
+            "Speech is not supported.";
+
+        return;
+    }
+
+
+    window.speechSynthesis.cancel();
+
+
+    currentSpeech =
+        new SpeechSynthesisUtterance(
+            generatedVoiceText
+        );
+
+
+    currentSpeech.rate = 0.9;
+
+    currentSpeech.pitch = 1;
+
+    currentSpeech.volume = 1;
+
+
+    currentSpeech.onstart =
+        function() {
+
+            document
+                .getElementById(
+                    "voiceStatus"
+                )
+                .textContent =
+                "🔊 AI is explaining the concept...";
+
+        };
+
+
+    currentSpeech.onend =
+        function() {
+
+            document
+                .getElementById(
+                    "voiceStatus"
+                )
+                .textContent =
+                "✅ Explanation completed.";
+
+        };
+
+
+    currentSpeech.onerror =
+        function(event) {
+
+            console.error(
+                "Speech Error:",
+                event
+            );
+
+
+            document
+                .getElementById(
+                    "voiceStatus"
+                )
+                .textContent =
+                "❌ Voice error.";
+
+        };
+
+
+    window.speechSynthesis.speak(
+        currentSpeech
+    );
+}
+
+
+/* =========================================================
+   START VOICE
+========================================================= */
+
+function startVoice() {
+
+    if (!generatedVoiceText) {
+
+        document
+            .getElementById(
+                "voiceStatus"
+            )
+            .textContent =
+            "Please generate an explanation first.";
+
+        return;
+    }
+
+
+    speakGeneratedExplanation();
+}
+
+
+/* =========================================================
+   PAUSE
+========================================================= */
+
+function pauseVoice() {
+
+    if (
+        "speechSynthesis" in window &&
+        window.speechSynthesis.speaking
+    ) {
+
+        window.speechSynthesis.pause();
+
+
+        document
+            .getElementById(
+                "voiceStatus"
+            )
+            .textContent =
+            "⏸ Voice paused.";
+    }
+}
+
+
+/* =========================================================
+   RESUME
+========================================================= */
+
+function resumeVoice() {
+
+    if (
+        "speechSynthesis" in window
+    ) {
+
+        window.speechSynthesis.resume();
+
+
+        document
+            .getElementById(
+                "voiceStatus"
+            )
+            .textContent =
+            "▶ AI is speaking...";
+    }
+}
+
+
+/* =========================================================
+   STOP
+========================================================= */
+
+function stopVoice() {
+
+    if (
+        "speechSynthesis" in window
+    ) {
+
+        window.speechSynthesis.cancel();
+
+
+        const status =
+            document.getElementById(
+                "voiceStatus"
+            );
+
+
+        if (status) {
+
+            status.textContent =
+                "⏹ Voice stopped.";
+        }
+    }
+}
+
+
+/* =========================================================
+   DYNAMIC VISUAL DIAGRAM
+========================================================= */
+
+async function generateDiagram() {
+
+    const topic =
+        document
+            .getElementById("diagramTopic")
+            .value
+            .trim();
+
+
+    const output =
+        document.getElementById(
+            "diagramOutput"
+        );
+
+
+    if (!topic) {
+
+        output.innerHTML = `
+
+            <span class="error-text">
+                ❌ Please enter a topic.
+            </span>
+
+        `;
+
+        return;
+    }
+
+
+    output.innerHTML =
+        showLoading(
+            "AI is creating a visual diagram for " +
+            topic +
+            "..."
+        );
+
+
+    try {
+
+        const data =
+            await apiRequest(
+                "/api/diagram",
+                {
+                    topic: topic
+                }
+            );
+
+
+        if (
+            !data.diagram
+        ) {
+
+            throw new Error(
+                "No diagram data received."
+            );
+        }
+
+
+        renderDiagram(
+            data.diagram
+        );
+
+    }
+    catch (error) {
+
+        console.error(
+            "Diagram Error:",
+            error
+        );
+
+
+        output.innerHTML = `
+
+            <span class="error-text">
+                ❌ Diagram generation failed.
+            </span>
+
+            <br><br>
+
+            ${escapeHTML(
+                error.message
+            )}
+
+        `;
+    }
+}
+
+
+/* =========================================================
+   RENDER DIAGRAM
+========================================================= */
+
+function renderDiagram(diagramData) {
+
+    const output =
+        document.getElementById(
+            "diagramOutput"
+        );
+
+
+    const title =
+        diagramData.title ||
+        "AI Generated Diagram";
+
+
+    const description =
+        diagramData.description ||
+        "";
+
+
+    const steps =
+        Array.isArray(
+            diagramData.steps
+        )
+            ? diagramData.steps
+            : [];
+
+
+    if (steps.length === 0) {
+
+        throw new Error(
+            "Diagram contains no steps."
+        );
+    }
+
+
+    let html = `
+
+        <div class="diagram-container">
+
+            <div class="diagram-title">
+
+                ${escapeHTML(title)}
+
+            </div>
+
+
+            <div class="diagram-description">
+
+                ${escapeHTML(description)}
+
+            </div>
+
+
+            <div class="diagram">
+
+    `;
+
+
+    steps.forEach(
+        function(step,index) {
+
+            html += `
+
+                <div class="diagram-item">
+
+                    <div class="diagram-icon">
+
+                        ${escapeHTML(
+                            step.icon || "🔹"
+                        )}
+
+                    </div>
+
+
+                    <div class="diagram-item-title">
+
+                        ${escapeHTML(
+                            step.title ||
+                            "Step " + (index + 1)
+                        )}
+
+                    </div>
+
+
+                    <div class="diagram-item-description">
+
+                        ${escapeHTML(
+                            step.description || ""
+                        )}
+
+                    </div>
+
+                </div>
+
+            `;
+
+
+            if (
+                index <
+                steps.length - 1
+            ) {
+
+                html += `
+
+                    <div class="arrow">
+                        →
+                    </div>
+
+                `;
+            }
+        }
+    );
+
+
+    html += `
+
+            </div>
+
+        </div>
+
+    `;
+
+
+    output.innerHTML = html;
+}
+
+
+/* =========================================================
+   ESCAPE HTML
+========================================================= */
+
+function escapeHTML(value) {
+
+    const div =
+        document.createElement("div");
+
+
+    div.textContent =
+        String(value);
+
+
+    return div.innerHTML;
+}
+
+
+/* =========================================================
+   ENTER KEY LOGIN
+========================================================= */
+
+document.addEventListener(
+    "keydown",
+    function(event) {
+
+        const loginPage =
+            document.getElementById(
+                "loginPage"
+            );
+
+
+        if (
+            event.key === "Enter" &&
+            loginPage.style.display !== "none"
+        ) {
+
+            login();
+
+        }
+
+    }
+);
+
+
+/* =========================================================
+   ENTER KEY FOR VOICE TOPIC
+========================================================= */
+
+document
+    .getElementById("voiceTopic")
+    .addEventListener(
+        "keydown",
+        function(event) {
+
+            if (
+                event.key === "Enter"
+            ) {
+
+                event.preventDefault();
+
+                generateVoiceExplanation();
+            }
+
+        }
+    );
+
+
+/* =========================================================
+   ENTER KEY FOR DIAGRAM TOPIC
+========================================================= */
+
+document
+    .getElementById("diagramTopic")
+    .addEventListener(
+        "keydown",
+        function(event) {
+
+            if (
+                event.key === "Enter"
+            ) {
+
+                event.preventDefault();
+
+                generateDiagram();
+            }
+
+        }
+    );
+
+</script>
+
+</body>
+
+</html>
